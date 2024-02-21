@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workforce Harmony - Main Menu</title>
+  <style>
+    /* Resetting default margin and padding */
+    body, ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Set background image */
+    body {
+      background-image: url('images/Designer.png'); /* Replace 'background.jpg' with the path to your image */
+      background-size: cover; /* Cover the entire viewport */
+      background-repeat: no-repeat; /* Do not repeat the image */
+    }
+
+    /* Styles for menu bar */
+    .menu-bar {
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      overflow: hidden;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 2; /* Ensure menu bar is on top */
+    }
+    .menu-bar a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .menu-bar a.logout-btn {
+      float: right; /* Align logout button to the right */
+    }
+    .menu-bar a:hover {
+      background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background on hover */
+    }
+
+    /* Styles for navigation bar */
+    .nav-bar {
+      background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+      padding: 20px;
+      position: fixed;
+      top: 70px;
+      left: -100%; /* Off-screen initially */
+      width: 300px; /* Width of navigation bar */
+      height: 100%;
+      overflow: hidden;
+      transition: left 0.3s ease-out;
+      z-index: 1; /* Ensure navigation bar is below menu bar */
+    }
+    .nav-bar a {
+      display: block;
+      color: #333;
+      text-align: left;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .nav-bar a:hover {
+      background-color: #ddd;
+    }
+
+    /* Close button */
+    .close-btn {
+      float: right;
+      cursor: pointer;
+      padding: 14px 16px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Menu Bar -->
+<div class="menu-bar">
+  <a href="#" class="menu-btn">☰ Menu</a>
+  <a href="#" class="logout-btn" onclick="confirmLogout()">Logout</a> 
+</div>
+
+<!-- Navigation Bar -->
+<div class="nav-bar" id="navBar">
+  <span class="close-btn" onclick="closeNav()">×</span>
+  <a href="profile">Employee Profiles</a>
+  <a href="attd">Attendance </a>
+  <a href="task">Task Assignment & Tracking</a>
+  <a href="performance">Performance Evaluation</a>
+  <a href="approvals">Leave Approvals</a>
+  <a href="#">Skill & Training Management</a>
+  <a href="#">Reporting & Analytics</a>
+  <a href="#" class="logout-btn" onclick="confirmLogout()">Logout</a> 
+</div>
+
+<script>
+function closeNav() {
+  document.getElementById("navBar").style.left = "-100%"; /* Move off-screen */
+}
+
+function confirmLogout() {
+  if (confirm("Are you sure you want to logout?")) {
+    // Redirect to the login page
+    window.location.href = "index.jsp"; // Change "login.html" to the actual login page URL
+  }
+}
+  
+document.querySelector('.menu-btn').addEventListener('click', function() {
+  var navBar = document.getElementById("navBar");
+  if (navBar.style.left === "-100%" || navBar.style.left === "") { /* Check if off-screen */
+    navBar.style.left = "0"; /* Move in */
+  } else {
+    navBar.style.left = "-100%"; /* Move off-screen */
+  }
+});
+</script>
+
+</body>
+</html>
